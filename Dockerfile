@@ -1,5 +1,13 @@
 FROM python:3.9
 
+LABEL title="metapy-container" \
+      description="MeTA + metapy runtime environment in a neat package" \
+      authors="Andrew Hoeft (arhoeft2@illinois.edu)" \
+      license="MIT" \
+      version="0.2.13" \
+      revision="1" \
+      created="2020-12-13T21:00:00-04:00"
+
 # Install dependencies
 RUN apt-get update
 RUN apt-get install -y g++-7 gcc-7 cmake libicu-dev git libjemalloc-dev zlib1g-dev doxygen python-dev
