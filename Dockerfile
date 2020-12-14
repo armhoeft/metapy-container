@@ -30,6 +30,10 @@ RUN apt-get remove -y g++-7 gcc-7 cmake libicu-dev git libjemalloc-dev zlib1g-de
 RUN rm /usr/bin/g++ && ln -s /usr/bin/g++-8 /usr/bin/g++
 RUN rm /usr/bin/gcc && ln -s /usr/bin/gcc-8 /usr/bin/gcc
 RUN rm -rf /var/lib/apt/lists/
-RUN echo "export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so.2" >> /root/.bashrc
 
-CMD export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so.2 && python
+# Configure runtime environment
+RUN echo "export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so.2" >> /root/.bashrc
+ENV LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so.2
+
+# Set default start command
+CMD python
